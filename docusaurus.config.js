@@ -10,9 +10,9 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Cortest",
-  tagline: "Dinosaurs are cool",
-  favicon: "img/favicon.ico",
+  title: "CORTEST",
+  tagline: "An application for testing epileptic seizures",
+  favicon: "img/logo_cortest.webp",
 
   // Set the production url of your site here
   url: "https://NolanBeaujault.github.io",
@@ -76,7 +76,7 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "Cortest",
+        title: "CORTEST",
         logo: {
           alt: "My Site Logo",
           src: "img/logo_cortest.webp",
@@ -141,7 +141,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Cortest. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
