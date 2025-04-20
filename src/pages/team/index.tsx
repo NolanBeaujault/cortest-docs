@@ -5,41 +5,45 @@ import { Linkedin } from "lucide-react";
 
 export default function Team() {
   return (
-    <Layout title="Notre équipe" description="Rencontrez l'équipe de Cortest">
+    <Layout title="Our Team" description="Meet the team behind the project">
       <main className={styles.teamPage}>
         <div className={styles.banner}>
-          <h1>Notre équipe</h1>
+          <h1>The Team</h1>
           <p>
-            Tous les 4 très intéressés par le développement d’une application,
-            et soucieux de contribuer au milieu hospitalier, nous nous sommes
-            lancés à fond dans ce projet.
+            Driven by a shared passion for application development and a
+            commitment to enhancing the hospital environment, the four of us
+            have fully dedicated ourselves to this project.
           </p>
         </div>
         <div className={styles.members}>
           {[
             {
               name: "Maïwen Mile",
-              img: "/img/maiwenn.jpg",
-              linkedin: "#",
-              role: "rôle ou compétences",
+              img: "img/maiwen_profile.jpeg",
+              linkedin: "https://www.linkedin.com/in/maiwen-mille/",
+              role: "ww",
+              description: "rôle ou compétences",
             },
             {
               name: "Nolan Beaujault",
-              img: "/img/nolan.jpg",
-              linkedin: "#",
-              role: "rôle ou compétences",
+              img: "img/nolan_profile.jpeg",
+              linkedin: "https://www.linkedin.com/in/nolan-beaujault/",
+              role: "Backend Developer",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit, non molestie metus blandit ut. Duis finibus facilisis fringilla. ",
             },
             {
               name: "Apolline Baudry",
-              img: "/img/apolline.jpg",
-              linkedin: "#",
-              role: "rôle ou compétences",
+              img: "img/apo_profile.jpeg",
+              linkedin:
+                "https://www.linkedin.com/in/apolline-baudry-1037ab288/",
+              description: "rôle ou compétences",
             },
             {
               name: "Berkay Oztas",
-              img: "/img/berkay.jpg",
-              linkedin: "#",
-              role: "rôle ou compétences",
+              img: "img/berkay_profile.jpeg",
+              linkedin: "https://www.linkedin.com/in/berkay-oztas-39b749324/",
+              description: "rôle ou compétences",
             },
           ].map((member) => (
             <div key={member.name} className={styles.card}>
@@ -49,13 +53,14 @@ export default function Team() {
                 alt={member.name}
               />
               <h3>{member.name}</h3>
-              <p>{member.role}</p>
+              <p className={styles.role}>{member.role}</p>
+              <p>{member.description}</p>
               <a
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Linkedin size={18} color="#0A66C2" />
+                <Linkedin size={20} color="#0A66C2" />
               </a>
             </div>
           ))}
