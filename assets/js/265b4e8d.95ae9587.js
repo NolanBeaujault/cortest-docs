@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcortest_docs=self.webpackChunkcortest_docs||[]).push([[8507],{5272:t=>{t.exports=JSON.parse('{"metadata":{"permalink":"/cortest-docs/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
