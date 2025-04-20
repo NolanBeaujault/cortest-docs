@@ -21,14 +21,15 @@ export default function Team() {
               name: "Maïwen Mile",
               img: "img/maiwen_profile.jpeg",
               linkedin: "https://www.linkedin.com/in/maiwen-mille/",
-              role: "ww",
-              description: "rôle ou compétences",
+              role: "Project Manager",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit, non molestie metus blandit ut. Duis finibus facilisis fringilla. ",
             },
             {
               name: "Nolan Beaujault",
               img: "img/nolan_profile.jpeg",
               linkedin: "https://www.linkedin.com/in/nolan-beaujault/",
-              role: "Backend Developer",
+              role: "Backend Manager",
               description:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit, non molestie metus blandit ut. Duis finibus facilisis fringilla. ",
             },
@@ -37,13 +38,17 @@ export default function Team() {
               img: "img/apo_profile.jpeg",
               linkedin:
                 "https://www.linkedin.com/in/apolline-baudry-1037ab288/",
-              description: "rôle ou compétences",
+              role: "UI/UX Designer",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit, non molestie metus blandit ut. Duis finibus facilisis fringilla. ",
             },
             {
               name: "Berkay Oztas",
               img: "img/berkay_profile.jpeg",
               linkedin: "https://www.linkedin.com/in/berkay-oztas-39b749324/",
-              description: "rôle ou compétences",
+              role: "Frontend Manager",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit, non molestie metus blandit ut. Duis finibus facilisis fringilla. ",
             },
           ].map((member) => (
             <div key={member.name} className={styles.card}>

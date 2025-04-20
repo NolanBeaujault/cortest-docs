@@ -12,14 +12,18 @@
   color: #2b4765;
 }
 
+html[data-theme="dark"] .banner {
+  color: #9be2c0;
+}
+
 .banner h1 {
-  font-size: 3rem;
+  font-size: 5rem;
   font-family: "Berlin Sans FB", sans-serif;
   margin-bottom: 1rem;
 }
 
 .banner p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-family: "Candara", sans-serif;
 }
 
