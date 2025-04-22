@@ -1,23 +1,76 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
+  background-image: url("/img/6.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 2200px;
+  margin: 0 auto;
+  gap: 55rem;
+  flex-wrap: wrap;
+}
+
+.leftContent {
+  flex: 1;
+  min-width: 50px;
+  text-align: left;
+}
+
+.rightContent {
+  flex: 1;
+  min-width: 150px;
+  text-align: right;
+}
+
+.hero__title {
+  color: #2b4765;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  color: #2b4765;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.heroImage {
+  max-width: 300px;
+  height: auto;
 }
 
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+/* Responsive design */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+
+  .heroContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .leftContent,
+  .rightContent {
+    text-align: center;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
 }
