@@ -1,5 +1,5 @@
 .heroBanner {
-  background-image: url("/img/6.svg");
+  background: url("/img/6.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,38 +12,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 2200px;
-  margin: 0 auto;
-  gap: 55rem;
-  flex-wrap: wrap;
-}
-
-.leftContent {
-  flex: 1;
-  min-width: 50px;
-  text-align: left;
-}
-
-.rightContent {
-  flex: 1;
-  min-width: 150px;
-  text-align: right;
+  width: 100%;
+  max-width: 1800px;
+  margin-inline: auto;
 }
 
 .hero__title {
   color: #2b4765;
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: 1rem;
 }
 
 .hero__subtitle {
   color: #2b4765;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 1.5rem;
 }
 
 .heroImage {
   max-width: 300px;
+  aspect-ratio: square;
   height: auto;
 }
 
@@ -51,6 +39,18 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.customButton {
+  border: 2px solid #25c2a0;
+  color: #25c2a0;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.customButton:hover {
+  background-color: #25c2a0;
+  color: white;
 }
 
 /* Responsive design */

@@ -21,16 +21,16 @@ function HomepageHeader() {
           </p>
           <div className={styles.buttons}>
             <Link
-              className="button button--secondary button--lg"
+              className={`button button--secondary button--lg ${styles.customButton}`}
               to="/docs/intro"
             >
-              Dive into the application's features - 🧠
+              Dive into the application's features
             </Link>
           </div>
         </div>
         <div className={styles.rightContent}>
           <img
-            src="img/logo_cortest.webp"
+            src="img/logo_borderless.svg"
             alt="App logo"
             className={styles.heroImage}
           />

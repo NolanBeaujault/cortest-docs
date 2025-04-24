@@ -1,7 +1,7 @@
 .teamPage {
   padding: 2rem;
   text-align: center;
-  font-family: "Candara", sans-serif;
+  /* font-family: "Candara", sans-serif; */
 }
 
 .banner {
@@ -24,7 +24,7 @@ html[data-theme="dark"] .banner {
 
 .banner p {
   font-size: 1.3rem;
-  font-family: "Candara", sans-serif;
+  /* font-family: "Candara", sans-serif; */
 }
 
 .members {
@@ -40,7 +40,12 @@ html[data-theme="dark"] .banner {
 
 .members p {
   font-size: 1rem;
-  font-family: "Candara", sans-serif;
+  /* font-family: "Candara", sans-serif; */
+  color: #2b4765;
+}
+
+html[data-theme="dark"] .members p {
+  color: #9be2c0;
 }
 
 .role {

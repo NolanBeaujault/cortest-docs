@@ -127,7 +127,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Cortest. Built with Docusaurus.`,
+        copyright: `© ${new Date().getFullYear()} Cortest. All rights reserved.`,
       },
       prism: {
         theme: prismThemes.github,
