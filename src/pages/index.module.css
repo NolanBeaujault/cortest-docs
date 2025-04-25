@@ -30,7 +30,7 @@
 }
 
 .heroImage {
-  max-width: 300px;
+  max-width: 350px;
   aspect-ratio: square;
   height: auto;
 }
@@ -42,15 +42,15 @@
 }
 
 .customButton {
-  border: 2px solid #25c2a0;
-  color: #25c2a0;
+  border: 3px solid #25c2a0;
+  color: #2b4765 !important;
   background-color: transparent;
   transition: all 0.3s ease;
 }
 
 .customButton:hover {
   background-color: #25c2a0;
-  color: white;
+  color: white !important;
 }
 
 /* Responsive design */
