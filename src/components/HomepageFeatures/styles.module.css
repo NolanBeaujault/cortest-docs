@@ -1,11 +1,34 @@
 .features {
   display: flex;
-  align-items: center;
-  padding: 2rem 0;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 3rem 0;
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.card {
+  background-color: #d0eeed;
+  border-radius: 1.5rem;
+  padding: 2rem 1rem 1rem 1rem;
+  width: 280px;
+  position: relative;
+  overflow: visible;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.featureImg {
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 120px;
+}
+
+.cardTitle {
+  margin-top: 20px;
+  color: #2b4765;
+  font-weight: bold;
+  font-size: 1.2rem;
 }

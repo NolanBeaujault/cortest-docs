@@ -42,15 +42,25 @@
 }
 
 .customButton {
-  border: 3px solid #25c2a0;
+  border: 3px solid #fdfef3;
   color: #2b4765 !important;
   background-color: transparent;
   transition: all 0.3s ease;
 }
 
 .customButton:hover {
-  background-color: #25c2a0;
-  color: white !important;
+  background-color: #fdfef3;
+  color: #2b4765 !important;
+}
+
+.intro {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #2b4765 !important;
+  font-weight: 600;
+  max-width: 800px;
+  margin: 3rem auto;
+  margin-bottom: 0px;
 }
 
 /* Responsive design */

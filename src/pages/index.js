@@ -49,6 +49,12 @@ export default function Home() {
     >
       <HomepageHeader />
       <main>
+        <div className={styles.intro}>
+          <p>
+            Long hospital stays, rare specialist staff...Cortest offers a
+            simple, accessible alternative for testing epileptic seizures.
+          </p>
+        </div>
         <HomepageFeatures />
       </main>
     </Layout>
