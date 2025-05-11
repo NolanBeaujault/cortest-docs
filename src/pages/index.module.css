@@ -64,6 +64,10 @@
   margin-bottom: 0px;
 }
 
+html[data-theme="dark"] .intro {
+  color: #9be2c0 !important;
+}
+
 /* Responsive design */
 @media screen and (max-width: 996px) {
   .heroBanner {

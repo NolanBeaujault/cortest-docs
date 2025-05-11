@@ -2,46 +2,109 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# About the app
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## Project motivation
 
-## Getting Started
+<div style={{ backgroundColor: '#1fa588', padding: '1rem 1.5rem', borderRadius: '1.5rem', color: 'white'}}>
+### Origins
 
-Get started by **creating a new site**.
+Our engineering project was proposed in an academic context as part of the Engineering Project Teaching at Télécom Physique Strasbourg. This program connects engineering students with a diverse range of clients, including industry professionals, academic researchers, and medical practitioners in hospitals. These collaborations provide us with real-world projects to undertake over the course of one year.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+</div>
 
-### What you'll need
+## Medical need
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+<div style={{
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  gap: '1rem',
+  marginBottom: '1rem'
+}}>
 
-## Generate a new site
+  <div style={{
+    backgroundColor: '#2b4765',
+    padding: '1rem 1.5rem',
+    borderRadius: '1.5rem',
+    width: '100%',
+    flex: '1 1 300px',
+    boxSizing: 'border-box',
+    color: 'white'
+  }}>
+    ### Objective
+    <p>
+    Locate the cerebral areas that are the source of seizures (focal epilepsy) using a non-invasive method.<br/><br/>
+    Current method : 
+    <li>15-day hospital stay to await or trigger a seizure</li>
+    <li>Observation and testing of the patient by a specialist</li>
+    <li>The results help the neurologist identify the affected areas and decide on possible surgery</li><br/>
+    Limitations of the current method:
+    <li>Long and costly hospital stay</li>
+    <li>Uncertainty of the occurrence of a seizure</li>
+    <li>Need for available specialized personnel</li>
+    </p>
+  </div>
 
-Generate a new Docusaurus site using the **classic template**.
+  <div style={{
+    backgroundColor: '#4fddbf',
+    padding: '1rem 1.5rem',
+    borderRadius: '1.5rem',
+    width: '100%',
+    flex: '1 1 300px',
+    boxSizing: 'border-box',
+    color: 'black'
+  }}>
+    ### Our solution
+    <p>
+    Development of an Android application : <br/>
+    <li>Enables patients and their families to conduct tests at home</li>
+    <li>Transmits the results to a neurologist for remote analysis</li>
+    <li>Can be used in hospitals by non-specialized personnel</li>
+    <br/><br/>
+    Advantages the application :
+    <li>Reduces the duration of hospitalization</li>
+    <li>Ensures continuous monitoring of seizures</li>
+    <li>Facilitates patient management in various medical contexts</li>
+        </p>
+  </div>
 
-The classic template will automatically be added to your project after you run the command:
+</div>
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+## Institutional support
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+<div style={{ backgroundColor: '#d0eeed', padding: '1rem 1.5rem', borderRadius: '1.5rem', color: 'black' }}>
+  
+  <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+    <div style={{
+      flex: '1 1 120px', 
+      maxWidth: '150px', 
+      display: 'flex', 
+      justifyContent: 'center',
+    }}>
+      ![CHU Logo](/img/Logo_CHU_Strasbourg.svg.png)
+    </div>
+    <div style={{ flex: '1 1 auto' }}>
+      <p style={{ margin: 0 }}>Lucas Gauer</p>
+      <p style={{ margin: 0 }}>Head of Clinic - Hospital Assistant.</p>
+      <p style={{ margin: 0 }}>PhD student in neuroscience.</p>
+      <p style={{ margin: 0 }}>Strasbourg University Hospital - HUS</p>
+    </div>
+  </div>
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+  <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginTop: '2rem' }}>
+    <div style={{
+      flex: '1 1 150px', 
+      maxWidth: '250px', 
+      display: 'flex', 
+      justifyContent: 'center',
+    }}>
+      ![TPS Logo](/img/Logo_Télécom_Physique_Strasbourg.png)
+    </div>
+    <div style={{ flex: '1 1 auto' }}>
+      <p style={{ margin: 0 }}>Télécom Physique Strasbourg</p>
+      <p style={{ margin: 0 }}>A french engineering school.</p>
+    </div>
+  </div>
 
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+</div>
