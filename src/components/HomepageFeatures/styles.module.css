@@ -1,7 +1,7 @@
 .features {
   display: flex;
   justify-content: center;
-  gap: 8rem;
+  gap: 10rem;
   flex-wrap: wrap;
   padding: 5rem 0;
   width: 100%;
@@ -32,4 +32,10 @@
   color: #2b4765;
   font-weight: bold;
   font-size: 1.2rem;
+}
+
+@media screen and (max-width: 996px) {
+  .features {
+    gap: 5rem;
+  }
 }

@@ -54,11 +54,12 @@
 }
 
 .intro {
+  display: flex;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #2b4765 !important;
-  font-weight: 600;
-  max-width: 800px;
+  font-weight: 800;
+  max-width: 900px;
   margin: 3rem auto;
   margin-bottom: 0px;
 }
