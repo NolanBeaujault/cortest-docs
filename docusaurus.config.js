@@ -76,7 +76,7 @@ const config = {
           },
           { to: "/team", label: "Our Team", position: "left" },
           {
-            href: "https://github.com/facebook/docusaurus",
+            href: "https://gitlab.com/a.baudry/cortest",
             /*label: "GitHub",*/
             position: "right",
             className: "gitlab-icon",

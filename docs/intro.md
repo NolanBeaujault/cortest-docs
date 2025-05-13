@@ -47,7 +47,7 @@ Our engineering project was proposed in an academic context as part of the Engin
   </div>
 
   <div style={{
-    backgroundColor: '#4fddbf',
+    backgroundColor: '#e1f7f4',
     padding: '1rem 1.5rem',
     borderRadius: '1.5rem',
     width: '100%',
@@ -73,7 +73,7 @@ Our engineering project was proposed in an academic context as part of the Engin
 
 ## Institutional support
 
-<div style={{ backgroundColor: '#d0eeed', padding: '1rem 1.5rem', borderRadius: '1.5rem', color: 'black' }}>
+<div style={{ backgroundColor: '#e1f7f4', padding: '1rem 1.5rem', borderRadius: '1.5rem', color: '#2b4765' }}>
   
   <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
     <div style={{
