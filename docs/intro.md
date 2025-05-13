@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Project motivation
 
-<div style={{ backgroundColor: '#1fa588', padding: '1rem 1.5rem', borderRadius: '1.5rem', color: 'white'}}>
+<div style={{ backgroundColor: '#97ebc9', padding: '1rem 1.5rem', borderRadius: '1.5rem', color: '#2b4765'}}>
 ### Origins
 
 Our engineering project was proposed in an academic context as part of the Engineering Project Teaching at Télécom Physique Strasbourg. This program connects engineering students with a diverse range of clients, including industry professionals, academic researchers, and medical practitioners in hospitals. These collaborations provide us with real-world projects to undertake over the course of one year.
@@ -53,7 +53,7 @@ Our engineering project was proposed in an academic context as part of the Engin
     width: '100%',
     flex: '1 1 300px',
     boxSizing: 'border-box',
-    color: 'black'
+    color: '#2b4765'
   }}>
     ### Our solution
     <p>
