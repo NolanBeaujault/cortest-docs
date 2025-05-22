@@ -73,3 +73,10 @@ a:hover svg {
   transform: scale(1.2);
   transition: transform 0.2s ease-in-out;
 }
+
+@media (max-width: 600px) {
+  .institution-text {
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
