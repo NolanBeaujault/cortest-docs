@@ -23,7 +23,7 @@ export default function Team() {
               linkedin: "https://www.linkedin.com/in/maiwen-mille/",
               role: "Project Manager",
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit, non molestie metus blandit ut. Duis finibus facilisis fringilla. ",
+                "Leading this project in collaboration with healthcare professionals gave me a unique opportunity to develop my project management skills in a real-world context. Working on the frontend learned me to create intuitive interfaces that meet the specific needs of users.",
             },
             {
               name: "Nolan Beaujault",
@@ -31,7 +31,7 @@ export default function Team() {
               linkedin: "https://www.linkedin.com/in/nolan-beaujault/",
               role: "Backend Manager",
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit, non molestie metus blandit ut. Duis finibus facilisis fringilla. ",
+                "This project significantly boosted my backend skills, particularly around performance, security, and data structure, while also strengthening my ability to work with real users and adapt my architecture accordingly.",
             },
             {
               name: "Apolline Baudry",
@@ -40,7 +40,7 @@ export default function Team() {
                 "https://www.linkedin.com/in/apolline-baudry-1037ab288/",
               role: "UI/UX Designer",
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit, non molestie metus blandit ut. Duis finibus facilisis fringilla. ",
+                "Interacting directly with healthcare providers helped me refine each screen with empathy and precision, reinforcing both my design thinking and my technical ability to turn ideas into user-friendly realities.",
             },
             {
               name: "Berkay Oztas",
@@ -48,7 +48,7 @@ export default function Team() {
               linkedin: "https://www.linkedin.com/in/berkay-oztas-39b749324/",
               role: "Frontend Manager",
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit, non molestie metus blandit ut. Duis finibus facilisis fringilla. ",
+                "I learned to build smooth, reactive interfaces that respect healthcare standards and workflows. The constant feedback from professionals taught me to prioritize clarity and responsiveness in every detail.",
             },
           ].map((member) => (
             <div key={member.name} className={styles.card}>
