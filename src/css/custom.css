@@ -80,3 +80,33 @@ a:hover svg {
     margin-top: 1rem;
   }
 }
+
+.doc-button {
+  display: inline-block;
+  background-color: #d0eeed;
+  color: #2b4765;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.doc-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="dark"] .description-box p {
+  color: black;
+}
+
+/* Custom styles - wait page */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
