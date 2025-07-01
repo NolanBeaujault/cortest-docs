@@ -43,7 +43,7 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
   </div>
 
   <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
-    <img src={useBaseUrl('/img/home.svg')} alt="Home screen" style={{ maxWidth: '50%', borderRadius: '1rem' }} />
+    <img src={useBaseUrl('/img/home.svg')} alt="Home screen" style={{ maxWidth: '60%', borderRadius: '1rem' }} />
   </div>
 </div>
 
@@ -65,11 +65,11 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
 }}>
 
   <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
-    <img src={useBaseUrl('/img/demo.svg')} alt="Home screen" style={{ maxWidth: '50%', borderRadius: '1rem' }} />
+    <img src={useBaseUrl('/img/demo.svg')} alt="Home screen" style={{ maxWidth: '60%', borderRadius: '1rem' }} />
   </div>
   <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
     <h2 style={{ marginTop: 0, color: '#2B4765' }}>Demo Page</h2>
-    <Link to="/docs/intro"
+    <Link to="/wait"
         className="doc-button"
     >&lt; DemoPage &gt;</Link>
     <p>
@@ -104,7 +104,7 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
 
   <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
     <h2 style={{ marginTop: 0, color: '#2B4765' }}>File Page</h2>
-    <Link to="/docs/intro"
+    <Link to="/wait"
         className="doc-button"
     >&lt; FilePage &gt;</Link>
     <p>
@@ -124,7 +124,7 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
   </div>
 
   <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
-    <img src={useBaseUrl('/img/fichiers.svg')} alt="Home screen" style={{ maxWidth: '55%', borderRadius: '1rem' }} />
+    <img src={useBaseUrl('/img/fichiers.svg')} alt="Home screen" style={{ maxWidth: '65%', borderRadius: '1rem' }} />
   </div>
 </div>
 
@@ -146,11 +146,11 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
 }}>
 
   <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
-    <img src={useBaseUrl('/img/demo.svg')} alt="Home screen" style={{ maxWidth: '60%', borderRadius: '1rem' }} />
+    <img src={useBaseUrl('/img/parametres.svg')} alt="Home screen" style={{ maxWidth: '65%', borderRadius: '1rem' }} />
   </div>
   <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
     <h2 style={{ marginTop: 0, color: '#2B4765' }}>Settings Page</h2>
-    <Link to="/docs/intro"
+    <Link to="/wait"
         className="doc-button"
     >&lt; SettingsPage &gt;</Link>
     <p>
@@ -165,5 +165,43 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
     <p>
       Finally, this is where you can choose the default camera (front or rear), depending on whether you want to opt for a self-test or a hetero-test. 
     </p>
+  </div>
+</div>
+
+---
+
+## Configuration questionnaire
+
+<div style={{
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: '2rem',
+  marginBottom: '1rem',
+  background: 'linear-gradient(45deg, #F8F8F8 20%, #E0E0E0 60%, #29d5b0 100%)',
+  padding: '2rem',
+  borderRadius: '2rem',
+  border: '1px solid #ddd'
+}}>
+
+  <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
+    <h2 style={{ marginTop: 0, color: '#2B4765' }}>Configuration Questionnaire</h2>
+    <Link to="/wait"
+        className="doc-button"
+    >&lt; QuestionnaireScreen &gt;</Link>
+    <p>
+      On this page, users can customise the questions that will be asked at the end of a crisis, as part of the post-crisis questionnaire.
+    </p>
+    <p>
+      Several types of responses are available : free text, yes/no, multiple choice, cursor, etc. 
+    </p>
+    <p>
+      The configuration should be carried out with the help of the neurologist, to ensure that the information collected is relevant and useful for the patient's follow-up.
+    </p>
+  </div>
+
+  <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
+    <img src={useBaseUrl('/img/home.svg')} alt="Home screen" style={{ maxWidth: '60%', borderRadius: '1rem' }} />
   </div>
 </div>

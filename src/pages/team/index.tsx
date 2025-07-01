@@ -35,7 +35,7 @@ export default function Team() {
             },
             {
               name: "Apolline Baudry",
-              img: "img/apo_profile.jpeg",
+              img: "img/apo_pp.jpeg",
               linkedin:
                 "https://www.linkedin.com/in/apolline-baudry-1037ab288/",
               role: "UI/UX Designer",
