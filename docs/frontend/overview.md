@@ -202,6 +202,77 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
   </div>
 
   <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
-    <img src={useBaseUrl('/img/home.svg')} alt="Home screen" style={{ maxWidth: '60%', borderRadius: '1rem' }} />
+    <img src={useBaseUrl('/img/questionnaire.png')} alt="Home screen" style={{ maxWidth: '60%', borderRadius: '1rem' }} />
+  </div>
+</div>
+
+---
+
+## Profile Page
+
+<div style={{
+  display: 'flex',
+  flexWrap: 'wrap-reverse',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: '2rem',
+  marginBottom: '1rem',
+  background: 'linear-gradient(135deg, #29d5b0 0%, #E0E0E0 40%, #F8F8F8 100%)',
+  padding: '2rem',
+  borderRadius: '2rem',
+  border: '1px solid #ddd'
+}}>
+
+  <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
+    <img src={useBaseUrl('/img/profile_page.png')} alt="Home screen" style={{ maxWidth: '55%', borderRadius: '1rem' }} />
+  </div>
+  <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
+    <h2 style={{ marginTop: 0, color: '#2B4765' }}>Profile Page</h2>
+    <Link to="/wait"
+        className="doc-button"
+    >&lt; ProfilePage &gt;</Link>
+    <p>
+      This page contains patient information, in particular the patient's code word. The code word, which is unique to each patient and defined by the neurologist with the patient, is requested at the start of each test triggered during a crisis.
+    </p>
+    <p>
+      On this page, you can also view the patient's personal information registered at the sign-up stage.
+    </p>
+  </div>
+
+</div>
+
+---
+
+## Test Screen
+
+<div style={{
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: '2rem',
+  marginBottom: '1rem',
+  background: 'linear-gradient(135deg, #F8F8F8 20%, #E0E0E0 60%, #29d5b0 100%)',
+  padding: '2rem',
+  borderRadius: '2rem',
+  border: '1px solid #ddd'
+}}>
+
+  <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
+    <h2 style={{ marginTop: 0, color: '#2B4765' }}>Test Page</h2>
+    <Link to="/wait" className="doc-button">&lt; TestScreen &gt;</Link>
+    <p>
+      The Test page is where a crisis test is started, either by the patient or a relative. After clicking <strong>‘Start a test’</strong> (also available via the widget), the app guides users through pre-set instructions (<Link to="/gestion_tests">test configuration</Link>), records video and audio, and allows switching between front and rear cameras.
+    </p>
+    <p>
+      Instructions can be read aloud if auto mode is enabled. Users can skip steps or end the test at any time, with confirmation required to finish.
+    </p>
+    <p>
+      At the end, a post-crisis questionnaire appears to collect feedback. If needed, it can be completed later from the Home Page.
+    </p>
+  </div>
+
+  <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
+    <img src={useBaseUrl('/img/test_img.png')} alt="Home screen" style={{ maxWidth: '65%', borderRadius: '1rem' }} />
   </div>
 </div>
