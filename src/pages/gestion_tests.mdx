@@ -1,4 +1,6 @@
-﻿# Test configuration and managment
+﻿import Link from "@docusaurus/Link";
+
+# Test configuration and managment
 
 ## Overview
 
@@ -430,7 +432,7 @@ Navigating back to ConfigScreen.kt preserves selectedTests between pages.
 
 #### **4. Configuration History – `ConfigHistoryScreen.kt`**
 
-This screen lists all the previous configurations (local JSON files) that have been saved in the form of clickable boxes. It can be accessed from the Configuration screen [ConfigScreen.kt](#**_3._recap_and_save_–_`recapconfigscreen.kt`**).  
+This screen lists all the previous configurations (local JSON files) that have been saved in the form of clickable boxes. It can be accessed from the Configuration screen <Link to="/wait"> ConfigScreen.kt </Link>.  
 When the user clicks on a configuration from the list, the application navigates back to the Configuration screen while keeping the name of the clicked file, and then preselects tests based on what was saved and used for that configuration.
 
 ```kotlin title="ConfigHistoryScreen.kt"
