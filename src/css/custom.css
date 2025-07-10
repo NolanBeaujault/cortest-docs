@@ -110,3 +110,7 @@ html[data-theme="dark"] .description-box p {
     transform: rotate(360deg);
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
