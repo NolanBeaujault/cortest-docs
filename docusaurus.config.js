@@ -88,46 +88,41 @@ const config = {
         style: "light",
         links: [
           {
-            title: "Docs",
+            title: "Documentation",
+            items: [
+              { label: "Getting Started", to: "/docs/intro" },
+              { label: "Frontend", to: "/docs/frontend/overview" },
+              { label: "Backend", to: "/docs/backend/intro" },
+            ],
+          },
+          {
+            title: "Project Links",
             items: [
               {
-                label: "Docs",
-                to: "/docs/intro",
+                label: "GitHub - cortest-api",
+                href: "https://github.com/NolanBeaujault/cortest-api",
+              },
+              {
+                label: "GitHub - cortest-docs",
+                href: "https://github.com/NolanBeaujault/cortest-docs",
               },
             ],
           },
           {
-            title: "Community",
+            title: "About",
             items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+                label: "About the Project",
+                href: "https://gitlab.com/a.baudry/cortest",
               },
               {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
-              },
-              {
-                label: "X",
-                href: "https://x.com/docusaurus",
-              },
-            ],
-          },
-          {
-            title: "More",
-            items: [
-              {
-                label: "Our Team",
-                to: "/team",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                label: "Contact",
+                to: "/contact",
               },
             ],
           },
         ],
-        copyright: `© ${new Date().getFullYear()} Cortest. All rights reserved.`,
+        copyright: `© ${new Date().getFullYear()} Cortest · Built by the CORTEST team.`,
       },
       prism: {
         theme: prismThemes.github,
