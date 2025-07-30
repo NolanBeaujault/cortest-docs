@@ -3,13 +3,13 @@ sidebar_position: 1
 title: Overview
 ---
 
-import React from 'react';
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import React from "react";
+import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # Application Overview
 
-Explore the main screens of the application: **Home**, **Demo**, **Files**, and **Settings**.
+Explore the main screens of the application: **Home**, **Demo**, **Files**, **Settings** and many more.
 
 ---
 
@@ -30,7 +30,7 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
 
   <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
     <h2 style={{ marginTop: 0, color: '#2B4765' }}>Home Page</h2>
-    <Link to="/wait"
+    <Link to="homepage"
         className="doc-button"
     >&lt; HomePage &gt;</Link>
     <p>
@@ -64,24 +64,37 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
   border: '1px solid #ddd'
 }}>
 
-  <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
-    <img src={useBaseUrl('/img/demo.svg')} alt="Home screen" style={{ maxWidth: '60%', borderRadius: '1rem' }} />
-  </div>
-  <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
-    <h2 style={{ marginTop: 0, color: '#2B4765' }}>Demo Page</h2>
-    <Link to="/wait"
-        className="doc-button"
-    >&lt; DemoPage &gt;</Link>
-    <p>
-      The Demo page guides users through the use of the 'Start a test' functionality. It allows users to familiarize themselves with the application beforehand, in a calm environment.
-    </p>
-    <p>
-      It explains step by step how a crisis test runs, how to move from one test to another, how to end the test and how to validate the saving of the files.
-    </p>
-    <p>
-      The aim is to make the application simple and intuitive to use, even in a stressful situation.
-    </p>
-  </div>
+{" "}
+
+<div style={{ flex: "1 1 300px", textAlign: "center" }}>
+  <img
+    src={useBaseUrl("/img/demo.svg")}
+    alt="Home screen"
+    style={{ maxWidth: "60%", borderRadius: "1rem" }}
+  />
+</div>
+<div
+  className="description-box"
+  style={{ flex: "1 1 400px", minWidth: "300px" }}
+>
+  <h2 style={{ marginTop: 0, color: "#2B4765" }}>Demo Page</h2>
+  <Link to="/wait" className="doc-button">
+    &lt; DemoPage &gt;
+  </Link>
+  <p>
+    The Demo page guides users through the use of the 'Start a test'
+    functionality. It allows users to familiarize themselves with the
+    application beforehand, in a calm environment.
+  </p>
+  <p>
+    It explains step by step how a crisis test runs, how to move from one test
+    to another, how to end the test and how to validate the saving of the files.
+  </p>
+  <p>
+    The aim is to make the application simple and intuitive to use, even in a
+    stressful situation.
+  </p>
+</div>
 
 </div>
 
@@ -102,26 +115,40 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
   border: '1px solid #ddd'
 }}>
 
-  <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
-    <h2 style={{ marginTop: 0, color: '#2B4765' }}>File Page</h2>
-    <Link to="/wait"
-        className="doc-button"
-    >&lt; FilePage &gt;</Link>
-    <p>
-      This Files page is divided into three sections:
-      <ul>
-        <li>Questionnaire : contains the post-crisis questionnaires completed after each testing session.</li>
-        <li>Instructions : displays the testing instructions defined for each crisis, together with their timestamps.</li>
-        <li>Videos : contains all the videos recorded during the tests.</li>
-      </ul>
-    </p>
-    <p>
-      Each file linked to a crisis is named with the corresponding date and time, making it easy to find the right file.
-    </p>
-    <p>
-      All documents (PDFs, videos, etc.) are stored locally on the device, ensuring that they are always accessible, even without an internet connection, and can be consulted at the click of a button.
-    </p>
-  </div>
+{" "}
+
+<div
+  className="description-box"
+  style={{ flex: "1 1 400px", minWidth: "300px" }}
+>
+  <h2 style={{ marginTop: 0, color: "#2B4765" }}>File Page</h2>
+  <Link to="/wait" className="doc-button">
+    &lt; FilePage &gt;
+  </Link>
+  <p>
+    This Files page is divided into three sections:
+    <ul>
+      <li>
+        Questionnaire : contains the post-crisis questionnaires completed after
+        each testing session.
+      </li>
+      <li>
+        Instructions : displays the testing instructions defined for each
+        crisis, together with their timestamps.
+      </li>
+      <li>Videos : contains all the videos recorded during the tests.</li>
+    </ul>
+  </p>
+  <p>
+    Each file linked to a crisis is named with the corresponding date and time,
+    making it easy to find the right file.
+  </p>
+  <p>
+    All documents (PDFs, videos, etc.) are stored locally on the device,
+    ensuring that they are always accessible, even without an internet
+    connection, and can be consulted at the click of a button.
+  </p>
+</div>
 
   <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
     <img src={useBaseUrl('/img/fichiers.svg')} alt="Home screen" style={{ maxWidth: '65%', borderRadius: '1rem' }} />
@@ -185,21 +212,32 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
   border: '1px solid #ddd'
 }}>
 
-  <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
-    <h2 style={{ marginTop: 0, color: '#2B4765' }}>Configuration Questionnaire</h2>
-    <Link to="/wait"
-        className="doc-button"
-    >&lt; QuestionnaireScreen &gt;</Link>
-    <p>
-      On this page, users can customise the questions that will be asked at the end of a crisis, as part of the post-crisis questionnaire.
-    </p>
-    <p>
-      Several types of responses are available : free text, yes/no, multiple choice, cursor, etc. 
-    </p>
-    <p>
-      The configuration should be carried out with the help of the neurologist, to ensure that the information collected is relevant and useful for the patient's follow-up.
-    </p>
-  </div>
+{" "}
+
+<div
+  className="description-box"
+  style={{ flex: "1 1 400px", minWidth: "300px" }}
+>
+  <h2 style={{ marginTop: 0, color: "#2B4765" }}>
+    Configuration Questionnaire
+  </h2>
+  <Link to="/wait" className="doc-button">
+    &lt; QuestionnaireScreen &gt;
+  </Link>
+  <p>
+    On this page, users can customise the questions that will be asked at the
+    end of a crisis, as part of the post-crisis questionnaire.
+  </p>
+  <p>
+    Several types of responses are available : free text, yes/no, multiple
+    choice, cursor, etc.
+  </p>
+  <p>
+    The configuration should be carried out with the help of the neurologist, to
+    ensure that the information collected is relevant and useful for the
+    patient's follow-up.
+  </p>
+</div>
 
   <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
     <img src={useBaseUrl('/img/questionnaire.png')} alt="Home screen" style={{ maxWidth: '60%', borderRadius: '1rem' }} />
@@ -223,21 +261,34 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
   border: '1px solid #ddd'
 }}>
 
-  <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
-    <img src={useBaseUrl('/img/profile_page.png')} alt="Home screen" style={{ maxWidth: '55%', borderRadius: '1rem' }} />
-  </div>
-  <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
-    <h2 style={{ marginTop: 0, color: '#2B4765' }}>Profile Page</h2>
-    <Link to="/wait"
-        className="doc-button"
-    >&lt; ProfilePage &gt;</Link>
-    <p>
-      This page contains patient information, in particular the patient's code word. The code word, which is unique to each patient and defined by the neurologist with the patient, is requested at the start of each test triggered during a crisis.
-    </p>
-    <p>
-      On this page, you can also view the patient's personal information registered at the sign-up stage.
-    </p>
-  </div>
+{" "}
+
+<div style={{ flex: "1 1 300px", textAlign: "center" }}>
+  <img
+    src={useBaseUrl("/img/profile_page.png")}
+    alt="Home screen"
+    style={{ maxWidth: "55%", borderRadius: "1rem" }}
+  />
+</div>
+<div
+  className="description-box"
+  style={{ flex: "1 1 400px", minWidth: "300px" }}
+>
+  <h2 style={{ marginTop: 0, color: "#2B4765" }}>Profile Page</h2>
+  <Link to="/wait" className="doc-button">
+    &lt; ProfilePage &gt;
+  </Link>
+  <p>
+    This page contains patient information, in particular the patient's code
+    word. The code word, which is unique to each patient and defined by the
+    neurologist with the patient, is requested at the start of each test
+    triggered during a crisis.
+  </p>
+  <p>
+    On this page, you can also view the patient's personal information
+    registered at the sign-up stage.
+  </p>
+</div>
 
 </div>
 
@@ -258,21 +309,38 @@ Explore the main screens of the application: **Home**, **Demo**, **Files**, and 
   border: '1px solid #ddd'
 }}>
 
-  <div className="description-box" style={{ flex: '1 1 400px', minWidth: '300px' }}>
-    <h2 style={{ marginTop: 0, color: '#2B4765' }}>Test Page</h2>
-    <Link to="/wait" className="doc-button">&lt; TestScreen &gt;</Link>
-    <p>
-      The Test page is where a crisis test is started, either by the patient or a relative. After clicking <strong>‘Start a test’</strong> (also available via the widget), the app guides users through pre-set instructions (<Link to="/gestion_tests">test configuration</Link>), records video and audio, and allows switching between front and rear cameras.
-    </p>
-    <p>
-      Instructions can be read aloud if auto mode is enabled. Users can skip steps or end the test at any time, with confirmation required to finish.
-    </p>
-    <p>
-      At the end, a post-crisis questionnaire appears to collect feedback. If needed, it can be completed later from the Home Page.
-    </p>
-  </div>
+{" "}
+
+<div
+  className="description-box"
+  style={{ flex: "1 1 400px", minWidth: "300px" }}
+>
+  <h2 style={{ marginTop: 0, color: "#2B4765" }}>Test Page</h2>
+  <Link to="/wait" className="doc-button">
+    &lt; TestScreen &gt;
+  </Link>
+  <p>
+    The Test page is where a crisis test is started, either by the patient or a
+    relative. After clicking <strong>‘Start a test’</strong> (also available via
+    the widget), the app guides users through pre-set instructions (
+    <Link to="/gestion_tests">test configuration</Link>), records video and
+    audio, and allows switching between front and rear cameras.
+  </p>
+  <p>
+    Instructions can be read aloud if auto mode is enabled. Users can skip steps
+    or end the test at any time, with confirmation required to finish.
+  </p>
+  <p>
+    At the end, a post-crisis questionnaire appears to collect feedback. If
+    needed, it can be completed later from the Home Page.
+  </p>
+</div>
 
   <div style={{ flex: '1 1 300px', textAlign: 'center' }}>
     <img src={useBaseUrl('/img/test_img.png')} alt="Home screen" style={{ maxWidth: '65%', borderRadius: '1rem' }} />
   </div>
 </div>
+
+:::tip
+For a better understanding of the navigation through the pages, please refer to the <Link to="/navigation">Navigation Page</Link>.
+:::
