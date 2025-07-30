@@ -2,56 +2,209 @@
 sidebar_position: 2
 ---
 
+import React from "react";
+import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 # Home Page
 
-Documents are **groups of pages** connected through:
+The `HomeScreen.kt` file defines the **main screen** displayed after a successful login. It provides a quick overview of the patient's recent activity, including:
 
-- a **sidebar**
-- **previous/next navigation**
-- **versioning**
+- the latest test (date and time),
+- the total number of tests completed,
+- recent questionnaire and configuration updates.
 
-## Create your first Doc
+This screen also features:
 
-Create a Markdown file at `docs/hello.md`:
+- a custom **top bar** with the app logo, the `"Home"` title, and a profile icon that links to the <Link to="/wait">profile page</Link>,
+- action buttons to **start a new test** or **fill out the latest questionnaire** (conditionally enabled),
+- a bottom navigation bar to switch between all main screens of the app.
 
-```md title="docs/hello.md"
-# Hello
-
-This is my **first Docusaurus document**!
-```
-
-A new document is now available at [http://localhost:3000/docs/hello](http://localhost:3000/docs/hello).
-
-## Configure the Sidebar
-
-Docusaurus automatically **creates a sidebar** from the `docs` folder.
-
-Add metadata to customize the sidebar label and position:
-
-```md title="docs/hello.md" {1-4}
----
-sidebar_label: "Hi!"
-sidebar_position: 3
 ---
 
-# Hello
+### 1 - Data loading and state preparation
 
-This is my **first Docusaurus document**!
+Upon composition, the screen loads the most recent files and metadata from internal storage and `SharedPreferences`, including:
+
+- the most recent video file,
+- the most recent questionnaire file,
+- the latest configuration file,
+- the stored dates of last modifications (config and survey),
+- the `questionnaireFilled` state to determine if the survey can be retaken.
+
+```kotlin title="HomeScreen.kt"
+@Composable
+fun HomePage(navController: NavHostController, patient: List<Patient>) {
+    val context = LocalContext.current
+
+    val videoDir = File(context.getExternalFilesDir(null), "EpilepsyTests/Videos")
+    val questionnaireDir = File(context.getExternalFilesDir(null), "EpilepsyTests/Questionnaires")
+    val configDir = context.filesDir
+
+    val latestVideo = videoDir.listFiles()?.maxByOrNull { it.lastModified() }
+    val totalTests = videoDir.listFiles { _, name ->
+        name.startsWith("Vidéo_") && name.endsWith(".mp4")
+    }?.size ?: 0
+
+    val lastQuestionnaire = questionnaireDir.listFiles()?.maxByOrNull { it.lastModified() }
+    val lastConfig = configDir.listFiles { _, name ->
+        name.startsWith("configuration_") && name.endsWith(".json")
+    }?.maxByOrNull { it.lastModified() }
+
+    val configDate = remember {
+        val prefs = context.getSharedPreferences("AppPrefsConfig", Context.MODE_PRIVATE)
+        val timestamp = prefs.getLong("lastConfigModification", -1L)
+        if (timestamp != -1L)
+            SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(timestamp))
+        else "N/A"
+    }
+
+    val lastSurveyModDate = remember {
+        val prefs = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+        val timestamp = prefs.getLong("lastSurveyModification", -1L)
+        if (timestamp != -1L)
+            SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(timestamp))
+        else "N/A"
+    }
+
+    val videoDate = latestVideo?.let {
+        SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(it.lastModified()))
+    } ?: "N/A"
+
+    val videoTime = latestVideo?.let {
+        SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(it.lastModified()))
+    } ?: "N/A"
+
+    val questionnaireDate = lastQuestionnaire?.let {
+        SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(it.lastModified()))
+    } ?: "N/A"
+
+    val isQuestionnaireFilled = remember {
+        context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+            .getBoolean("questionnaireFilled", true)
+    }
+
+    ...
 ```
 
-It is also possible to create your sidebar explicitly in `sidebars.js`:
+---
 
-```js title="sidebars.js"
-export default {
-  tutorialSidebar: [
-    "intro",
-    // highlight-next-line
-    "hello",
-    {
-      type: "category",
-      label: "Tutorial",
-      items: ["tutorial-basics/create-a-document"],
-    },
-  ],
-};
+### 2 - UI Structure and Layout
+
+The UI is built using `Box`, `Column`, and themed `Text` elements for consistency. Cards display key data, and buttons enable user actions.
+
+#### Top App Bar
+
+A colored bar displays:
+
+- the logo,
+- the `"Home"` title,
+- a user icon leading to the profile screen.
+
+#### Summary Cards
+
+Three cards provide a snapshot of:
+
+1. Latest test (with date and time),
+2. Total number of tests recorded,
+3. Questionnaire and configuration details.
+
+#### Actions
+
+Two action buttons:
+
+- `"Commencer un test"` navigates to the test screen,
+- `"Remplir questionnaire"` is enabled only if the survey hasn't been completed.
+
+#### Code extract: UI composition
+
+```kotlin title="HomeScreen.kt"
+AppTheme {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .border(4.dp, Color(0xFF2B4765), RoundedCornerShape(1.dp))
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 70.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            // Top bar with logo, title and profile
+            ...
+            // Summary cards
+            ...
+            // Action buttons
+            ...
+        }
+
+        // Bottom navigation bar
+        NavigationBar(
+            navController = navController,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
+    }
+}
 ```
+
+---
+
+### 3 - Navigation Bar
+
+At the bottom of the screen, a persistent navigation bar allows quick access to:
+
+- `HomeScreen.kt` (current),
+- <Link to="/wait">`DemoScreen.kt`</Link>,
+- <Link to="/wait">`FilesPage.kt`</Link>,
+- <Link to="/wait">`SettingsPage.kt`</Link>.
+
+```kotlin title="HomeScreen.kt"
+@Composable
+fun NavigationBar(navController: NavHostController, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(70.dp)
+            .background(Color(0xFF2B4765)),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IconButton(onClick = { navController.navigate("home") }) {
+            Image(
+                painter = painterResource(id = R.mipmap.ic_home_foreground),
+                contentDescription = "Home",
+                modifier = Modifier.fillMaxHeight().aspectRatio(1f)
+            )
+        }
+        IconButton(onClick = { navController.navigate("demo/0") }) {
+            Image(
+                painter = painterResource(id = R.mipmap.ic_demo_foreground),
+                contentDescription = "Demo",
+                modifier = Modifier.fillMaxHeight().aspectRatio(1f)
+            )
+        }
+        IconButton(onClick = { navController.navigate("files") }) {
+            Image(
+                painter = painterResource(id = R.mipmap.ic_files_foreground),
+                contentDescription = "Files",
+                modifier = Modifier.fillMaxHeight().aspectRatio(1f)
+            )
+        }
+        IconButton(onClick = { navController.navigate("settings") }) {
+            Image(
+                painter = painterResource(id = R.mipmap.ic_settings_foreground),
+                contentDescription = "Settings",
+                modifier = Modifier.fillMaxHeight().aspectRatio(1f)
+            )
+        }
+    }
+}
+```
+
+---
+
+### Summary
+
+The `HomeScreen.kt` centralizes essential patient information and gives quick access to all app functionalities. It balances a clean UI layout with dynamic content loaded from local files and preferences, ensuring that the app always displays the latest patient data.
