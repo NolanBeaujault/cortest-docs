@@ -4,31 +4,88 @@ sidebar_position: 3
 
 # Demo Page
 
-Docusaurus creates a **page for each blog post**, but also a **blog index page**, a **tag system**, an **RSS** feed...
+This screen is part of the main UI pages can be accessed via the second icon of the navigation bar, and introduces the **Demo mode**: it provides a guided and interactive simulation of a testing sequence.
 
-## Create your first Post
+The Demo mode should help users understand how to use the application without recording any real data.  
+It must be designed to familiarize users with the flow of a real testing sequence, and _minimize user anxiety_ (especially in the context of seizures).
 
-Create a file at `blog/2021-02-28-greetings.md`:
+The composable function `DemoScreen` is the central function for this page :
 
-```md title="blog/2021-02-28-greetings.md"
----
-slug: greetings
-title: Greetings!
-authors:
-  - name: Joel Marcey
-    title: Co-creator of Docusaurus 1
-    url: https://github.com/JoelMarcey
-    image_url: https://github.com/JoelMarcey.png
-  - name: Sébastien Lorber
-    title: Docusaurus maintainer
-    url: https://sebastienlorber.com
-    image_url: https://github.com/slorber.png
-tags: [greetings]
----
+```kotlin title="DemoScreen.kt"
+@Composable
+fun DemoScreen(navController: NavController) {
+    var currentStep by remember { mutableStateOf(0) }
+    var auto by remember { mutableStateOf(true) } // Default value
 
-Congratulations, you have made your first post!
+    LaunchedEffect(currentStep) {
+        when (currentStep) {
+            0 -> delay(3000).also { currentStep = 1 }
+            1 -> {} // Nothing here because we're waiting for the choice
+            2 -> delay(5000).also { currentStep = 3 }
+            3 -> delay(5000).also { currentStep = 4 }
+            4 -> delay(7000).also { currentStep = 5 }
+            5 -> delay(5000).also { currentStep = 6 }
+            6 -> delay(5000).also { currentStep = 7 }
+            7 -> delay(5000).also { currentStep = 8 }
+            8 -> delay(5000).also { currentStep = 9 }
+            9 -> delay(5000).also { currentStep = 10 }
+            10 -> delay(5000).also { currentStep = 11 }
+            11 -> delay(3000).also { navController.navigate("home") }
+        }
+    }
 
-Feel free to play around and edit this post as much as you like.
+    Box(modifier = Modifier.fillMaxSize()) {
+        when (currentStep) {
+            0 -> StartScreen()
+            1 -> ChoixScreen(
+                onChooseAuto = { auto = true; currentStep = 2 },
+                onChooseHetero = { auto = false; currentStep = 2 }
+            )
+            2 -> HomeScreen1(onNextStep = { currentStep = 3 })
+            3 -> InstructionScreen1(auto, onNextStep = { currentStep = 4 })
+            4 -> InstructionScreen2(onNextStep = { currentStep = 5 })
+            5 -> InstructionScreen3(auto, onNextStep = { currentStep = 6 })
+            6 -> TextScreen1(auto)
+            7 -> InstructionScreen4(auto, onNextStep = { currentStep = 8 })
+            8 -> ConfirmationScreen1(onNextStep = { currentStep = 9 })
+            9 -> ConfirmationScreen2(onNextStep = { currentStep = 10 })
+            10 -> TextScreen2(auto)
+            11 -> EndScreen()
+        }
+
+        // Button at top right of the screen to exit the Demo mode
+        Image(
+            painter = painterResource(id = R.mipmap.ic_fin_demo_simple_foreground),
+            contentDescription = "Bouton arrêt démo",
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(16.dp)
+                .size(60.dp)
+                .clickable { navController.navigate("home") }
+        )
+    }
+}
 ```
 
-A new blog post is now available at [http://localhost:3000/blog/greetings](http://localhost:3000/blog/greetings).
+This mode is divided into 12 steps (= screens to display) that are defined as Composable functions in this file, and called inside the central `DemoScreen` function.
+
+Here is a breakdown of them :
+
+| Step |      Screen name      | Description                                                                                                                                                                                                                                                                                                                                      |
+| :--: | :-------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  0   |     `StartScreen`     | Start screen for the demo.                                                                                                                                                                                                                                                                                                                       |
+|  1   |     `ChoixScreen`     | Patient chooses between **Auto** or **Hetero** modes. **_"Demo"_ instructions** will be given based on the selected mode : mode **_Auto_** starts the Demo made for patients testing their seizures themselves, and mode **_Hetero_** starts the demo mode from the point of view of another person going to test the seizure (e.g. a relative). |
+|  2   |     `HomeScreen1`     | Home screen with an arrow and a text to highlight the button to click for starting a testing sequence.                                                                                                                                                                                                                                           |
+|  3   | `InstructionScreen1`  | Test n°1 with its instruction displayed on the screen. There are two different demo instructions that can be given to the user based on the selected mode (Hetero/Auto).                                                                                                                                                                         |
+|  4   | `InstructionScreen2`  | Same screen as **step 3**, but the demo instruction changes to an arrow & a text showing the user where to click to go to the next test.                                                                                                                                                                                                         |
+|  5   | `InstructionScreen3`  | Test n°2 with its instruction displayed on the screen.                                                                                                                                                                                                                                                                                           |
+|  6   |     `TextScreen1`     | A screen with a demo instruction in the center that explains how different tests will be given in the testing sequence. Again, two different demo instructions can be given to the user based on the selected mode (Hetero/Auto).                                                                                                                |
+|  7   | `InstructionScreen4`  | Same screen as **step 5**, but a demo instruction is added in the form of an arrow & a text showing the user where to click to stop the testing sequence.                                                                                                                                                                                        |
+|  8   | `ConfirmationScreen1` | Confirmation screen for stopping the testing sequence. In practice, the confirmation screen gives the user the possibility to go back to the testing sequence ("Instruction screns") if needed. Here, a demo instruction (text + arrow) highlights the button that serves this function.                                                         |
+|  9   | `ConfirmationScreen2` | Same screen as **step 8**, but the demo instruction changes to an arrow & a text showing the user the other button, which confirms the end of the test when clicked. In practice, this is where the test should be registered : a final video is saved and PDF files a created. However, no real data is saved in the demo mode.                 |
+|  10  |     `TextScreen2`     | A screen with a demo instruction in the center that explains how a post-seizure survey will be available at the end of the testing sequence, with questions to gather additional data on the seizure. Again, two different demo instructions can be given to the user based on the selected mode (Hetero/Auto).                                  |
+|  11  |      `EndScreen`      | Final screen for the demo.                                                                                                                                                                                                                                                                                                                       |
+
+:::info
+The code for each of the 12 screens can be directly found in the `DemoScreen.kt` file.
+:::
