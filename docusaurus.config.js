@@ -26,14 +26,26 @@ const config = {
   projectName: "cortest-docs", // Usually your repo name.
 
   onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: ["en", "fr"], // Ajout du français
+    localeConfigs: {
+      en: {
+        label: "English",
+      },
+      fr: {
+        label: "Français",
+      },
+    },
   },
 
   presets: [
@@ -70,18 +82,27 @@ const config = {
         items: [
           {
             type: "docSidebar",
-            sidebarId: "tutorialSidebar",
+            sidebarId: "theAppSidebar",
             position: "left",
-            label: "Docs",
+            label: "The App",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "technicalSidebar",
+            position: "left",
+            label: "Technical Doc",
           },
           { to: "/team", label: "Our Team", position: "left" },
           {
             href: "https://gitlab.com/a.baudry/cortest",
-            /*label: "GitHub",*/
             position: "right",
             className: "gitlab-icon",
             "aria-label": "GitHub repository",
           },
+          // {
+          //   type: "localeDropdown",
+          //   position: "right",
+          // },
         ],
       },
       footer: {

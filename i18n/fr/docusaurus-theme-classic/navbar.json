@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "CORTEST",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "My Site Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.The App": {
+    "message": "The App",
+    "description": "Navbar item with label The App"
+  },
+  "item.label.Technical Doc": {
+    "message": "Technical Doc",
+    "description": "Navbar item with label Technical Doc"
+  },
+  "item.label.Our Team": {
+    "message": "Our Team",
+    "description": "Navbar item with label Our Team"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.theAppSidebar.doc.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for the doc item Getting Started in sidebar theAppSidebar, linking to the doc the-app/intro"
+  },
+  "sidebar.theAppSidebar.doc.Install": {
+    "message": "Install",
+    "description": "The label for the doc item Install in sidebar theAppSidebar, linking to the doc the-app/install"
+  },
+  "sidebar.theAppSidebar.doc.Usage": {
+    "message": "Usage",
+    "description": "The label for the doc item Usage in sidebar theAppSidebar, linking to the doc the-app/usage"
+  },
+  "sidebar.theAppSidebar.doc.FAQ": {
+    "message": "FAQ",
+    "description": "The label for the doc item FAQ in sidebar theAppSidebar, linking to the doc the-app/faq"
+  },
+  "sidebar.technicalSidebar.category.Frontend": {
+    "message": "Frontend",
+    "description": "The label for category Frontend in sidebar technicalSidebar"
+  },
+  "sidebar.technicalSidebar.category.Backend": {
+    "message": "Backend",
+    "description": "The label for category Backend in sidebar technicalSidebar"
+  }
+}
