@@ -37,15 +37,17 @@ const config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "fr"], // Ajout du français
-    localeConfigs: {
-      en: {
-        label: "English",
-      },
-      fr: {
-        label: "Français",
-      },
-    },
+    locales: ["en"],
+    // defaultLocale: "en",
+    // locales: ["en", "fr"], // Ajout du français
+    // localeConfigs: {
+    //   en: {
+    //     label: "English",
+    //   },
+    //   fr: {
+    //     label: "Français",
+    //   },
+    // },
   },
 
   presets: [
@@ -111,7 +113,7 @@ const config = {
           {
             title: "Documentation",
             items: [
-              { label: "Getting Started", to: "/docs/intro" },
+              { label: "Getting Started", to: "/docs/the-app/intro" },
               { label: "Frontend", to: "/docs/frontend/overview" },
               { label: "Backend", to: "/docs/backend/intro" },
             ],
