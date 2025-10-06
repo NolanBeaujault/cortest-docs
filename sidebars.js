@@ -12,17 +12,7 @@ const sidebars = {
     {
       type: "doc",
       id: "the-app/install",
-      label: "Install",
-    },
-    {
-      type: "doc",
-      id: "the-app/usage",
-      label: "Usage",
-    },
-    {
-      type: "doc",
-      id: "the-app/faq",
-      label: "FAQ",
+      label: "Installation",
     },
   ],
 

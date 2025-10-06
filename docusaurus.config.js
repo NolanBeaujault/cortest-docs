@@ -37,7 +37,15 @@ const config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: ["en", "fr"], // Ajout du français
+    localeConfigs: {
+      en: {
+        label: "English",
+      },
+      fr: {
+        label: "Français",
+      },
+    },
   },
 
   presets: [
@@ -91,6 +99,10 @@ const config = {
             className: "gitlab-icon",
             "aria-label": "GitHub repository",
           },
+          // {
+          //   type: "localeDropdown",
+          //   position: "right",
+          // },
         ],
       },
       footer: {
