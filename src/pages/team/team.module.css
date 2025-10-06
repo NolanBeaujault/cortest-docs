@@ -77,3 +77,11 @@ html[data-theme="dark"] .members p {
   width: 30px;
   height: 30px;
 }
+
+.medicCard {
+  color: #d655ba; /* couleur spécifique pour les médecins */
+}
+
+html[data-theme="dark"] .medicCard {
+  color: #e6b8d2; /* version claire pour le thème sombre */
+}

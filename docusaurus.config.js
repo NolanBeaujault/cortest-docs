@@ -11,7 +11,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "CORTEST",
-  tagline: "An application for testing epileptic seizures",
+  tagline: "An application for seizure evaluation",
   favicon: "img/logo_cortest.webp",
 
   // Set the production url of your site here

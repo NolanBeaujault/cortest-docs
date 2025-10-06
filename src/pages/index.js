@@ -51,8 +51,10 @@ export default function Home() {
       <main>
         <div className={styles.intro}>
           <p>
-            Long hospital stays, rare specialist staff...Cortest offers a
-            simple, accessible alternative for testing epileptic seizures.
+            Some seizure occur rarely, hospital stays and video-EEG sessions are
+            lengthy, and trained staff are in short supply...CorTest offers a
+            simple tool to document seizures and empower patients and
+            caregivers.
           </p>
         </div>
         <HomepageFeatures />
