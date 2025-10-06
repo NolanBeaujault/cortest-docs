@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # About CorTest
 
-## Project Motivation
+## Context & Origins
 
 <div
   style={{
@@ -15,16 +15,16 @@ sidebar_position: 1
   }}
 >
   <h3>Origins</h3>
-  Our engineering project was proposed in an academic context as part of the Engineering
-  Project Teaching at Télécom Physique Strasbourg. This program connects engineering
-  students with a diverse range of clients, including industry professionals, academic
-  researchers, and medical practitioners in hospitals. These collaborations provide
-  us with real-world projects to undertake over the course of one year.
+  CorTest was created in 2024 from a collaboration between neurologists at the Strasbourg University Hospitals and engineering students from Télécom Physique Strasbourg.
+  More and more patients and relatives spontaneously record seizures with their smartphones. The usefulness of these home videos has been highlighted by several recent publications, but they also have limitations, especially when important information is not captured on camera.
+  CorTest aims to support this with a dual objective:
+  - to improve diagnosis by better documenting seizures through structured and informative videos.
+  - to strengthen the role of the patient and their relatives by guiding them step by step to film efficiently and safely.
 </div>
 
 ---
 
-## Medical Need
+## Clinical challenges
 
 <div style={{
   display: 'flex',
@@ -42,17 +42,13 @@ sidebar_position: 1
     color: 'white',
     boxSizing: 'border-box'
   }}>
-    <h3>Epilepsy: A Major Health Issue</h3>
-    Epilepsy affects around 1% of the world's population. This neurological disease manifests in sudden seizures that can seriously impact quality of life. Effective treatment relies on detailed knowledge of seizure frequency, type, and brain origin.
+    <h3>Epilepsy : A Diagnostic Challenge</h3>
+    Epilepsy affects nearly 1% of the population. Its diagnosis relies on detailed analysis of seizures: their onset, motor, cognitive, and emotional manifestations. Questioning patients and relatives often provides key clues, but it may be limited by:
+    - memory difficulties after the episode,
+    - stress or shock during the seizure,
+    - difficulty describing in words what was seen or felt.
 
-    <h4>What Happens During a Seizure?</h4>
-    Seizures stem from abnormal and excessive electrical activity in certain brain areas. This disrupts functions such as movement, speech, awareness, and perception. Localising the involved brain zone is crucial for diagnosis and potential surgery.
-
-    <h4>Why Is Seizure Testing Carried Out?</h4>
-    In hospitals, patients are monitored for seizures while undergoing real-time cognitive tests by nurses. These tests help map affected brain functions and localise seizure origins.
-
-    <h4>Limitations of Current Testing</h4>
-    Hospital testing often requires two-week stays and dedicated medical teams, resulting in long wait times, patient stress, and high healthcare costs.
+    As a result, some epilepsies are poorly characterized, or non-epileptic events are mistakenly taken for seizures.
 
   </div>
 
@@ -64,23 +60,19 @@ sidebar_position: 1
     color: '#2b4765',
     boxSizing: 'border-box'
   }}>
-    <h3>Our Solution</h3>
-
-    <h4>A Mobile Seizure Testing App</h4>
-    Cortest is an Android app that enables patients or caregivers to perform seizure testing at home or in hospitals, with or without trained staff. It guides users through tests, records responses and videos, and exports files for physicians.
-
-    <h4>A Tool for Patients and Carers</h4>
-    Cortest increases testing accessibility and reactivity. It also captures the critical first seconds of a seizure, aiding neurological analysis and potentially accelerating therapeutic decisions.
-
-    <br /><br />
-    ![Logo Cortest](../../static/img/logo_borderless.svg)
-
+    <h3>Video-EEG monitoring in hospitals: effective but restrictive</h3>
+    In some cases, especially in preparation for surgery, seizure recording in a video-EEG unit is essential. These units allow seizures to be filmed while simultaneously recording brain electrical activity, with live testing carried out by specialized teams.
+    However, this method has limitations:
+    - long and costly hospital stays,
+    - limited availability,
+    - need to reduce treatments to provoke a seizure,
+    requirement for specially trained staff.
   </div>
 </div>
 
 ---
 
-## Brain Functions & Testing
+## From home videos to clinical insight
 
 <div style={{
   display: 'flex',
@@ -102,9 +94,10 @@ sidebar_position: 1
     boxSizing: "border-box",
   }}
 >
-  <h3>Functions of the Brain</h3>
-  <br />
-  ![Brain Functions](/img/fonctions_cerveau.svg)
+  <h3>When a video can change everything</h3>
+  More and more patients and families spontaneously bring seizure videos recorded at home. Several studies have confirmed their diagnostic value : in some cases, they provide as much information as a hospital recording.
+
+  But in practice, some of these videos are difficult to interpret, mainly due to a lack of informative interactions.
 </div>
 
   <div style={{
@@ -115,12 +108,13 @@ sidebar_position: 1
     color: '#2b4765',
     boxSizing: 'border-box'
   }}>
-    <h3>Neurological Explanation</h3>
-    During seizures, the patient's cognitive abilities are assessed to identify affected brain areas.
+    <h3>CorTest : a guide during the seizure</h3>
+    CorTest assists the user during the seizure :
+    - quick recording start via a home screen widget,
+    - safety reminders,
+    - simple visual and/or voice instructions to perform gestures, answer questions, or test memory language.
     
-    Cards are used to stimulate various brain functions.
-   <br />
-    ![Testing Cards](/img/cartes_test.svg)
+    Each interaction is timestamped, which facilitates later interpretation by the neurologist.
 
   </div>
 
@@ -128,67 +122,95 @@ sidebar_position: 1
 
 ---
 
-## Institutional Support
+## Adaptive and Personalized use
 
-<div style={{ backgroundColor: '#D0EEED', padding: '1rem 1.5rem', borderRadius: '1.5rem', color: '#2b4765' }}>
-
-{" "}
-
-<div
-  style={{
-    display: "flex",
-    alignItems: "center",
-    flexWrap: "wrap",
-    gap: "1rem",
-  }}
->
-  <div
-    style={{
-      flex: "1 1 120px",
-      maxWidth: "250px",
-      display: "flex",
-      justifyContent: "center",
-    }}
-  >
-    ![CHU Logo](/img/logo_chu.svg)
-  </div>
-  <div className="institution-text" style={{ flex: "1 1 auto" }}>
-    <p style={{ margin: 0 }}>
-      <strong>Lucas Gauer</strong>
-    </p>
-    <p style={{ margin: 0 }}>Head of Clinic - Hospital Assistant</p>
-    <p style={{ margin: 0 }}>Doctor in Neuroscience</p>
-    <p style={{ margin: 0 }}>Strasbourg University Hospital - HUS</p>
-  </div>
-</div>
+<div style={{
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  gap: '1rem',
+  marginBottom: '1rem'
+}}>
 
 {" "}
 
-<div
-  style={{
-    display: "flex",
-    alignItems: "center",
-    flexWrap: "wrap",
-    gap: "1rem",
-    marginTop: "2rem",
-  }}
->
-  <div
-    style={{
-      flex: "1 1 150px",
-      maxWidth: "250px",
-      display: "flex",
-      justifyContent: "center",
-    }}
-  >
-    ![TPS Logo](/img/logo_tps.svg)
+    <div style={{
+    backgroundColor: '#97ebc9',
+    padding: '1rem 1.5rem',
+    borderRadius: '1.5rem',
+    flex: '1 1 300px',
+    color: '#2b4765',
+    boxSizing: 'border-box'
+  }}>
+
+  <h3>Adapted to every situation</h3>
+  - "Companion" mode : the app is installed on a relative's phone (parent, spouse, etc.) who films the patient while following the on-screen instructions step by step.
+
+  - "Selfie" mode : for patients whose awareness remains preserved during seizures, this mode allow them to record themselves with the front camera while following the instructions step by step.
+</div>
+
+  <div style={{
+    backgroundColor: '#2b4765',
+    padding: '1rem 1.5rem',
+    borderRadius: '1.5rem',
+    flex: '1 1 300px',
+    color: 'white',
+    boxSizing: 'border-box'
+  }}>
+    <h3>A personalized evaluation</h3>
+    The neurologist can adapt CorTest to each patient by configuring the instructions and their order.
+
+    Based on a standard template, tests can be added, removed, or rearranged to keep only those that are truly useful.
+
+    Thus, each recording focuses on clinically relevant information, without wasting time on unnecessary tasks.
   </div>
-  <div className="institution-text" style={{ flex: "1 1 auto" }}>
-    <p style={{ margin: 0 }}>
-      <strong>Télécom Physique Strasbourg</strong>
-    </p>
-    <p style={{ margin: 0 }}>A French engineering school</p>
+
+</div>
+
+---
+
+## Users & Data security
+
+<div style={{
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  gap: '1rem',
+  marginBottom: '1rem'
+}}>
+
+  <div style={{
+    backgroundColor: '#2b4765',
+    padding: '1rem 1.5rem',
+    borderRadius: '1.5rem',
+    flex: '1 1 300px',
+    color: 'white',
+    boxSizing: 'border-box'
+  }}>
+    <h3>Who can use CorTest?</h3>
+    - Patients and their relatives : to document rare seizures in order to provide effective information to the neurologist, which may potentially shorten the duration of later video-EEG recording if the seizures captured at home match those recorded in hospital.
+    - Video-EEG units : the patient or healthcare staff can use the app to efficiently document a seizure that occurs in the temporary absence of specifically trained personnel.
+    - Care facilities (nursing homes, etc.) : for certain patients with recurrent, poorly characterized episodes for whom long-term hospitalization is difficult to organize, staff can be equipped with the app to document events as effectively as possible.
+  </div>
+
+  <div style={{
+    backgroundColor: '#D0EEED',
+    padding: '1rem 1.5rem',
+    borderRadius: '1.5rem',
+    flex: '1 1 300px',
+    color: '#2b4765',
+    boxSizing: 'border-box'
+  }}>
+    <h3>Data protection and confidentiality</h3>
+    In the current version of the app, data is stored locally only on the patient’s smartphone, as if recorded using the device’s native camera app. There is no data sharing with third parties. The patient can then choose to show the videos to their neurologist during a later visit, or share them using a third-party tool of their choice.
+
+    The app’s architecture also allows configuration for remote data storage, if an approved health data hosting service is available (for example within a healthcare institution). This mode enables the patient to share data without physically meeting their neurologist. Transfer to the secure server is optional and subject to patient consent; data is encrypted and access is controlled.
+
   </div>
 </div>
 
-</div>
+---
+
+## Institutional recognition & Funding
+
+This project is part of the "Initiative d'Excellence" and has been funded by the French government under the "Investissements d'Avenir" programme.
