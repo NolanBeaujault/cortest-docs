@@ -17,7 +17,7 @@ export default function Team() {
       name: "Nolan Beaujault",
       img: "img/nolan_profile.jpeg",
       linkedin: "https://www.linkedin.com/in/nolan-beaujault/",
-      role: "Backend Manager",
+      role: "Backend & Web Manager",
       description:
         "This project significantly boosted my backend skills, particularly around performance, security, and data structure, while also strengthening my ability to work with real users and adapt my architecture accordingly.",
     },

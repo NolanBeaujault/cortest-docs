@@ -14,6 +14,11 @@ const sidebars = {
       id: "the-app/install",
       label: "Installation",
     },
+    {
+      type: "doc",
+      id: "the-app/tests",
+      label: "Tests available",
+    },
   ],
 
   // Sidebar pour "Technical Doc"
