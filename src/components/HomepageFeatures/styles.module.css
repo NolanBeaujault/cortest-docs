@@ -1,7 +1,7 @@
 .features {
   display: flex;
   justify-content: center;
-  gap: 10rem;
+  gap: 9rem;
   flex-wrap: wrap;
   padding: 5rem 0;
   width: 100%;
@@ -11,8 +11,8 @@
 .card {
   background-color: #d0eeed;
   border-radius: 1.5rem;
-  padding: 2rem 1rem 1rem 1rem;
-  width: 280px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  width: 300px;
   position: relative;
   overflow: visible;
   text-align: center;
@@ -35,13 +35,32 @@
 
 .cardTitle {
   margin-top: 20px;
+  margin-bottom: 1.5rem;
   color: #2b4765;
   font-weight: bold;
   font-size: 1.2rem;
 }
 
+.cardButton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #2b4765;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cardButton:hover {
+  background-color: #1a2d42;
+  transform: scale(1.05);
+  color: white;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 996px) {
   .features {
-    gap: 5rem;
+    gap: 7rem;
   }
 }

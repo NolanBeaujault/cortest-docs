@@ -4,24 +4,27 @@ import styles from "./styles.module.css";
 
 const FeatureList = [
   {
-    title: "Fast access",
-    image: "img/4.svg", // Mets ici le nom exact de ton image
-  },
-  {
-    title: "A complete library of tests",
-    image: "img/2.svg",
-  },
-  {
-    title: "Continuous monitoring",
+    title: "I am a neurologist or patient",
     image: "img/3.svg",
+    buttonText: "Explore the app",
+    link: "docs/the-app/intro",
+  },
+  {
+    title: "I am a frontend/backend developer",
+    image: "img/4.svg",
+    buttonText: "View documentation",
+    link: "docs/frontend/overview",
   },
 ];
 
-function Feature({ image, title }) {
+function Feature({ image, title, buttonText, link }) {
   return (
     <div className={styles.card}>
       <img src={image} alt={title} className={styles.featureImg} />
       <h3 className={styles.cardTitle}>{title}</h3>
+      <a href={link} className={styles.cardButton}>
+        {buttonText}
+      </a>
     </div>
   );
 }
