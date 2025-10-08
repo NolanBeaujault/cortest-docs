@@ -31,7 +31,7 @@ function HomepageHeader() {
                 className={`button button--secondary button--lg ${styles.customButton}`}
                 onClick={() => setIsModalOpen(true)}
               >
-                Join the waiting list
+                Get updates
               </button>
             </div>
           </div>
