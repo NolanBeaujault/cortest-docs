@@ -1,0 +1,263 @@
+---
+sidebar_position: 8
+---
+
+import Link from "@docusaurus/Link";
+
+# Testing Page
+
+It combines video recording with camera preview, test rendering, navigation, and buttons for user action like switching cameras (on the top-right corner of the screen), going to the next test (arrow button) or ending the testing session (cross button).
+
+Here are the key features for this page:
+
+- loading test data,
+- displaying instructions, images, and/or words using `TestDisplay.kt`,
+- starting and managing the recording via `startRecording`,
+- camera switching and logs via `SharedViewModel`,
+- tracking elapsed time for the tests.
+
+`SharedViewModel` is used to keep logs on the tests and what was done during the testing such as images that were shown, the instructions, or the elapsed time. This is important for saving the results as they are stored and used to generate a PDF file.
+
+The testing screen follows the following logic:
+
+### Loading local tests
+
+```kotlin title="TestScreen.kt"
+LaunchedEffect(Unit) {
+    coroutineScope.launch {
+        val localTests = LocalCatManager.loadLocalTests(context)
+        tests.addAll(localTests)
+
+        // Displaying the first instruction
+        val consigne = if (isFrontCamera) tests[currentInstructionIndex].a_consigne else tests[currentInstructionIndex].h_consigne
+        currentInstruction.value = consigne ?: "Aucune consigne"
+    }
+}
+```
+
+### Starting the recording and displaying the camera preview
+
+The camera preview is handled by calling function `CameraPreview`, and the recording is managed by function `startRecording` defined in `RecordingFunction.kt`.
+
+```kotlin title="TestScreen.kt"
+Box(modifier = Modifier.fillMaxSize()) {
+    CameraPreview(
+        context = context,
+        lifecycleOwner = lifecycleOwner,
+        videoCapture = videoCapture,
+        modifier = Modifier.fillMaxSize(),
+        cameraViewModel = cameraViewModel
+    )
+
+    ...
+
+    LaunchedEffect(videoCapture.value, isFrontCamera) {
+        if (videoCapture.value != null && !isRecording) {
+            delay(500L)
+            recording.value = startRecording(context, videoCapture.value!!, recording, videoFilePath, recordedVideos)
+            isRecording = true
+            Log.d(...)// Confirmation of recording start
+        } else {
+            Log.d(...)// Recording not started (potentially because there already is one active)
+        }
+    }
+}
+```
+
+`CameraPreview` shows the live camera preview using CameraX inside a `PreviewView`. Here's how it's defined:
+
+```kotlin title="TestScreen.kt"
+@Composable
+fun CameraPreview(
+    context: Context,
+    lifecycleOwner: LifecycleOwner,
+    videoCapture: MutableState<VideoCapture<Recorder>?>,
+    modifier: Modifier = Modifier,
+    cameraViewModel: CameraViewModel
+) {
+    val cameraProviderFuture = remember { ProcessCameraProvider.getInstance(context) }
+    val isFrontCamera by cameraViewModel.isFrontCamera // Linking to the View Model
+
+    AndroidView(
+        factory = { ctx ->
+            androidx.camera.view.PreviewView(ctx).apply {
+                bindCamera(this, context, lifecycleOwner, videoCapture, isFrontCamera, cameraProviderFuture)
+            }
+        },
+        modifier = modifier,
+        update = { previewView ->
+            // Updating the camera only if needed
+            if (videoCapture.value == null) {
+                bindCamera(previewView, context, lifecycleOwner, videoCapture, isFrontCamera, cameraProviderFuture)
+            }
+        }
+    )
+}
+```
+
+This function uses `bindCamera()`. It is a helper function to set up CameraX:
+
+```kotlin title="TestScreen.kt"
+fun bindCamera(
+    previewView: androidx.camera.view.PreviewView,
+    context: Context,
+    lifecycleOwner: LifecycleOwner,
+    videoCapture: MutableState<VideoCapture<Recorder>?>,
+    isFrontCamera: Boolean,
+    cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
+) {
+    cameraProviderFuture.addListener({
+        try {
+            val cameraProvider = cameraProviderFuture.get()
+
+            val cameraSelector = if (isFrontCamera) {
+                CameraSelector.DEFAULT_FRONT_CAMERA
+            } else {
+                CameraSelector.DEFAULT_BACK_CAMERA
+            }
+
+            cameraProvider.unbindAll()
+
+            val preview = Preview.Builder().build().also {
+                it.surfaceProvider = previewView.surfaceProvider
+            }
+
+            val recorder = Recorder.Builder()
+                .setQualitySelector(QualitySelector.from(Quality.HD))
+                .build()
+            val videoCaptureUseCase = VideoCapture.withOutput(recorder)
+
+            cameraProvider.bindToLifecycle(
+                lifecycleOwner, cameraSelector, preview, videoCaptureUseCase
+            )
+
+            videoCapture.value = videoCaptureUseCase
+
+        } catch (e: Exception) {
+            Log.e("CameraPreview", "Error initializing camera: ", e)
+        }
+    }, ContextCompat.getMainExecutor(context))
+}
+```
+
+### Displaying test content
+
+In the foreground of the screen - in front of the camera preview - are also displayed the tests with all required content. This is done by going through our list of tests loaded from the local JSON and stored into variable `tests`, which is then used for calling our `TestDisplay` function:
+
+```kotlin title="TestScreen.kt"
+tests.getOrNull(currentInstructionIndex)?.let {
+    TestDisplay(
+        test = it,
+        isFrontCamera = isFrontCamera,
+        key = currentInstructionIndex,
+        sharedViewModel = sharedViewModel,
+        onImageClick = { image ->
+            // Next test if an image is clicked
+            if (currentInstructionIndex < tests.size - 1) {
+                sharedViewModel.updateInstructionIndex(currentInstructionIndex + 1)
+                val consigne = if (isFrontCamera) tests[currentInstructionIndex + 1].a_consigne else tests[currentInstructionIndex + 1].h_consigne
+                currentInstruction.value = consigne ?: "Aucune consigne"
+            } else {
+                // Final instruction, navigating to the confirmation screen
+                navController.navigate("confirmation")
+            }
+        }
+    )
+}
+```
+
+### User interaction
+
+There are 3 other buttons that can be clicked by the user on this screen:
+
+- A button to stop the testing process and directly navigate to the confirmation screen:
+
+```kotlin title="TestScreen.kt"
+ImageClickable(
+    imageResId = R.mipmap.ic_close_foreground,
+    contentDescription = "Arrêter le test",
+    onClick = {
+        if (isRecording) {
+            stopRecording(context, recording, videoFilePath)
+            isRecording = false
+        }
+
+        // Adding the current instruction to the logs
+        tests.getOrNull(currentInstructionIndex)?.let {
+            sharedViewModel.addInstructionLog(Pair(currentInstruction.value, elapsedTime))
+        }
+
+        // Navigating to confirmation screen
+        navController.navigate("confirmation")
+    }
+)
+```
+
+- A button to go to the next test:
+
+```kotlin title="TestScreen.kt"
+ImageClickable(
+    imageResId = R.mipmap.ic_next_foreground,
+    contentDescription = "Instruction suivante",
+    onClick = {
+        // Adding the current instruction and elapsed time to the logs
+        tests.getOrNull(currentInstructionIndex)?.let {
+            sharedViewModel.addInstructionLog(Pair(currentInstruction.value, elapsedTime))
+        }
+
+        if (currentInstructionIndex < tests.size - 1) {
+            // Moving on to the next test
+            sharedViewModel.updateInstructionIndex(currentInstructionIndex + 1)
+
+            // Updating the instructions
+            val consigne = if (isFrontCamera) tests[currentInstructionIndex + 1].a_consigne else tests[currentInstructionIndex + 1].h_consigne
+            currentInstruction.value = consigne ?: "Aucune consigne"
+        } else {
+            // Final test : navigating to the confirmation screen
+            if (isRecording) {
+                stopRecording(context, recording, videoFilePath)
+                    isRecording = false
+            }
+            navController.navigate("confirmation")
+        }
+    }
+)
+```
+
+- A button for switching cameras between front and rear (which changes the type of testing between `auto` and `hetero`):
+
+```kotlin title="TestScreen.kt"
+ImageClickable(
+    imageResId = R.mipmap.ic_switch_camera_foreground,
+    contentDescription = "Changer de caméra",
+    onClick = {
+        if (isRecording) {
+            stopRecording(context, recording, videoFilePath)
+            isRecording = false
+        }
+
+        // Adding the switch to the logs
+        val cameraLabel =
+            if (!cameraViewModel.isFrontCamera.value) "Caméra frontale" else "Caméra arrière"
+        sharedViewModel.addInstructionLog(Pair("Changement de caméra : $cameraLabel", elapsedTime))
+
+        // Switching cameras
+        cameraViewModel.isFrontCamera.value = !cameraViewModel.isFrontCamera.value
+
+        // Updating the instruction based on which camera is used
+        val consigne = if (cameraViewModel.isFrontCamera.value) {
+            tests.getOrNull(currentInstructionIndex)?.a_consigne
+        } else {
+            tests.getOrNull(currentInstructionIndex)?.h_consigne
+        }
+        currentInstruction.value = consigne ?: "Aucune consigne"
+        videoCapture.value = null
+    },
+    modifier = Modifier
+        .padding(10.dp)
+        .align(Alignment.TopEnd)
+        .size(80.dp)
+)
+```
+
+Once all tests are finished, the user is redirected to the `ConfirmationScreen.kt` with the logs to save the results.

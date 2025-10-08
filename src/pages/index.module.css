@@ -46,6 +46,8 @@
   color: #2b4765 !important;
   background-color: transparent;
   transition: all 0.3s ease;
+  font-family: "Candara Bold", sans-serif;
+  font-size: 1.3rem;
 }
 
 .customButton:hover {
@@ -62,6 +64,8 @@
   max-width: 900px;
   margin: 3rem auto;
   margin-bottom: 0px;
+  padding-right: 1.3rem;
+  padding-left: 1.3rem;
 }
 
 html[data-theme="dark"] .intro {

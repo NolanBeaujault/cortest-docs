@@ -1,0 +1,137 @@
+---
+sidebar_position: 7
+---
+
+import React from "react";
+import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# Profile page
+
+The **Profile Page** is where are displayed all personal information that the user provided when signing up. To access this page, the user can click on the icon on the top-right of every main screen of **CorTest**.
+
+This data is retrieved from the server through a **GET** request (see [backend -> routes](/docs/backend/routes#3--get-profiluid)) and displayed on the screen.
+
+### Profile data loading
+
+When the screen is displayed, a call to `loadProfile(userId)` is triggered inside a `LaunchedEffect` to retrieve all patient data based on the `uid`, and using `RetrofitInstance.api.getUserProfile(userId)`.
+
+```kotlin title="ProfilePage.kt"
+fun loadProfile(userId : String) {
+    if (userId.isNotEmpty()) {
+        coroutineScope.launch {
+            try {
+                isLoading = true
+                val response = RetrofitInstance.api.getUserProfile(userId)
+                profile = response
+                isLoading = false
+            } catch (e: Exception) {
+                errorMessage = "Erreur : ${e.message}"
+                isLoading = false
+            }
+        }
+    } else {
+        errorMessage = "Aucun utilisateur connecté."
+        isLoading = false
+    }
+}
+
+LaunchedEffect(userId) {
+    loadProfile(userId)
+}
+```
+
+### UI Structure
+
+The layout of the profile page includes the following elements:
+
+- **A custom header, with:**
+
+  - the **Cortest** logo,
+  - a title `"Profil"`,
+  - a profile icon, which **refreshes the profile when clicked**.
+
+  ```kotlin title="ProfilePage.kt"
+  // Header
+  Box(
+      modifier = Modifier
+          .fillMaxWidth()
+          .height(75.dp)
+          .background(Color(0xFFD0EEED)), // Light blue
+      contentAlignment = Alignment.Center
+  ) {
+      Row(...)
+      {
+          Image(
+              painter = painterResource(id = R.mipmap.ic_brain_logo_foreground),
+              contentDescription = "Logo",
+              modifier = Modifier.fillMaxHeight()
+          )
+          Text(
+              text = "Profil",
+              style = MaterialTheme.typography.displayLarge.copy(
+                  fontSize = 28.sp,
+                  color = MaterialTheme.colorScheme.onBackground
+              ),
+              modifier = Modifier.padding(horizontal = 16.dp)
+          )
+          Image(
+              painter = painterResource(id = R.mipmap.ic_user_foreground),
+              contentDescription = "Profil",
+              modifier = Modifier
+                  .fillMaxHeight()
+                  .padding(start = 16.dp)
+                  .clickable {
+                      loadProfile(userId) // Refreshing profile page with uid
+                  }
+          )
+      }
+  }
+  ```
+
+- **An avatar:**
+
+  ```kotlin title="ProfilePage.kt"
+  Box(...
+  )  {
+      AsyncImage(
+          model = R.mipmap.ic_user_foreground, // Placeholder image
+          contentDescription = "Photo de profil",
+          modifier = Modifier
+              .fillMaxSize()
+              .clip(CircleShape)
+      )
+  }
+  ```
+
+- **Profile information:**
+
+  Once all loaded, the following fields that have been retrieved from the user's profile are displayed in rows:
+
+  - Last name
+  - First name
+  - Address
+  - Neurologist
+  - Date of birth
+  - Key word (mot-code)
+
+  ```kotlin title="ProfilePage.kt"
+  Column(...
+  ) {
+      ProfileInfoRow(label = "Nom", value = patient.nom)
+      ProfileInfoRow(label = "Prénom", value = patient.prenom)
+      ProfileInfoRow(label = "Adresse", value = patient.adresse)
+      ProfileInfoRow(label = "Neurologue", value = patient.neurologue)
+      ProfileInfoRow(label = "Date de naissance", value = patient.date_naissance ?: "Non renseignée")
+      ProfileInfoRow(label = "Mot code", value = patient.mot_code)
+  }
+  ```
+
+- **The custom navigation bar** with 4 icons to access the screens [`HomeScreen.kt`](homepage), [`DemoScreen.kt`](demopage), [`FilesPage.kt`](filespage), and [`SettingsPage.kt`](settingspage):
+
+  ```kotlin title="ProfilePage.kt"
+  NavigationBar(
+      navController = navController,
+      modifier = Modifier.align(Alignment.BottomCenter)
+  )
+  ```

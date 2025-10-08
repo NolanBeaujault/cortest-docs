@@ -47,10 +47,10 @@ export default function NewsletterModal({ isOpen, onClose }) {
         <button className={styles.closeButton} onClick={onClose}>
           ×
         </button>
-
-        <h2 className={styles.modalTitle}>Join our waiting list</h2>
+        <h2 className={styles.modalTitle}>Join our mailing list</h2>
         <p className={styles.modalDescription}>
-          Be the first to know when the app is available
+          You can download the prototype right now on the installation page, but
+          we'll keep you posted about major updates.
         </p>
 
         {status === "success" ? (
@@ -61,7 +61,23 @@ export default function NewsletterModal({ isOpen, onClose }) {
           <form onSubmit={handleSubmit} className={styles.form}>
             <input
               type="text"
-              placeholder="Your name"
+              placeholder="Your first name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={styles.input}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Your last name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={styles.input}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Your company and position"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className={styles.input}

@@ -1,6 +1,6 @@
-# 🧠 Cortest Documentation
+# 🧠 CorTest Documentation
 
-> Official technical documentation for the Cortest project — mobile seizure testing platform.
+> Official technical documentation for the CorTest project — mobile seizure testing platform.
 
 ---
 
