@@ -4,6 +4,8 @@ import styles from "./styles.module.css";
 export default function NewsletterModal({ isOpen, onClose }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [company_position, setCompanyPosition] = useState("");
   const [status, setStatus] = useState("idle"); // idle, sending, success, error
 
   const handleSubmit = async (e) => {
@@ -19,6 +21,8 @@ export default function NewsletterModal({ isOpen, onClose }) {
         body: JSON.stringify({
           email: email,
           name: name,
+          last_name: last_name,
+          company_position: company_position,
           _subject: "New newsletter subscription",
         }),
       });
@@ -29,6 +33,8 @@ export default function NewsletterModal({ isOpen, onClose }) {
           onClose();
           setEmail("");
           setName("");
+          setLastName("");
+          setCompanyPosition("");
           setStatus("idle");
         }, 2000);
       } else {
@@ -70,16 +76,16 @@ export default function NewsletterModal({ isOpen, onClose }) {
             <input
               type="text"
               placeholder="Your last name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={last_name}
+              onChange={(e) => setLastName(e.target.value)}
               className={styles.input}
               required
             />
             <input
               type="text"
               placeholder="Your company and position"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={company_position}
+              onChange={(e) => setCompanyPosition(e.target.value)}
               className={styles.input}
               required
             />
